@@ -64,7 +64,7 @@ def send_email(summary_text):
     sender=os.environ.get("SENDER_EMAIL")       
     receiver=os.environ.get("RECEIVER_EMAIL") 
     password=os.environ.get("EMAIL_PASSWORD")
-    msg=MINEText(summary_text)
+    msg=MIMEText(summary_text)
     msg["Subject"]="Pulse - Daily Summary"
     msg["From"]=sender
     msg["To"]=receiver
