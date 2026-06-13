@@ -53,13 +53,12 @@ def generate_summary():
     return summary
 
 def run():
-    """Main entry point. Called by Github actions"""
     summary = generate_summary()
-    print(summary)  # Shows in the action log.
-    #Save to a file (uploaded as a downloadable artifact in Github actions)
+    print(summary)
     with open("daily_summary.txt", "w", encoding="utf-8") as f:
         f.write(summary)
-    print("Pulse ran succesfully")
+    send_email(summary)
+    print("Pulse ran successfully")
 
 def send_email(summary_text):
     sender=os.environ.get("SENDER_EMAIL")       
